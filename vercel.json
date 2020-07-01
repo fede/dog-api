@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "api/documentation" },
+    { "source": "/user/:md5email/image", "destination": "api/image" },
+    { "source": "/user/:md5email/preferences", "destination": "api/private" },
+    { "source": "/user/:md5email/details", "destination": "api/public" }
+  ]
+}

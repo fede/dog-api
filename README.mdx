@@ -1,0 +1,93 @@
+# Dog Api
+
+![Dog](https://dog-api.vercel.app/user/279A853DF1CAAA245E1D0BBB8FFCC2C3/image)
+
+## General Guidelines
+
+- All requests should have the email hashed with md5.
+- Demo auhorization token `afbe40f8-e5c6-49ab-bfd6-57eba05ae1a0`
+
+## Endpoints
+
+### Get profile image
+
+When requesting an image what you will obtain is a `image/svg+xml`.
+
+```
+curl http://localhost:3000/user/{hashedEmail}/image
+```
+
+Example
+
+```
+curl https://dog-api.vercel.app/user/279A853DF1CAAA245E1D0BBB8FFCC2C3/image
+```
+
+### Get profile details
+
+```
+curl http://localhost:3000/user/{hashedEmail}/details
+```
+
+Example
+
+```
+curl https://dog-api.vercel.app/user/279A853DF1CAAA245E1D0BBB8FFCC2C3/details
+```
+
+Response example
+
+```
+{
+  name: 'John Doe',
+  age: 52
+}
+```
+
+### Get profile preferences
+
+```
+curl http://localhost:3000/user/{hashedEmail}/preferences \
+  -H 'Authorization: afbe40f8-e5c6-49ab-bfd6-57eba05ae1a0'
+```
+
+Example
+
+```sh
+curl https://dog-api.vercel.app/user/279A853DF1CAAA245E1D0BBB8FFCC2C3/preferences \
+  -H 'Authorization: afbe40f8-e5c6-49ab-bfd6-57eba05ae1a0'
+```
+
+Response example
+
+```
+{
+  darkMode: true,
+  location: 'Buenos Aires'
+}
+```
+
+<style>
+  body {
+    font-family: Inter, -apple-system, system-ui;
+    text-rendering: optimizeLegibility;
+    margin: auto;
+    max-width: 720px;
+  }
+  code {
+    color: #fd0000;
+    background-color: #f0f4f4;
+    padding: 0.2rem;
+    white-space: pre-wrap;
+  }
+  pre {
+    background-color: black;
+    border-radius: 0.25rem;
+    color: #cccccc;
+    padding: 1rem;
+  }
+  pre > code {
+    background-color: black;
+    color: #cccccc;
+  }
+</style>

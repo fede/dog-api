@@ -1,0 +1,15 @@
+{
+  "name": "interview-rest-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "vercel dev"
+  },
+  "dependencies": {
+    "alea": "^1.0.0",
+    "marked": "^1.1.0",
+    "seedrandom": "^3.0.5"
+  },
+  "devDependencies": {}
+}
