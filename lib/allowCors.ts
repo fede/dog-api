@@ -1,6 +1,8 @@
-module.exports = (pathFn) => async (req, res) => {
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
+import { NowRequest, NowResponse } from '@vercel/node'
+
+export default (pathFn) => async (req: NowRequest, res: NowResponse) => {
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  res.setHeader('Access-Control-Allow-Origin', `${req.headers.origin || '*'}`)
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS')
   res.setHeader(
     'Access-Control-Allow-Headers',

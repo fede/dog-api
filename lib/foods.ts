@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   'Cheese Pizza',
   'Hamburger',
   'Cheeseburger',
