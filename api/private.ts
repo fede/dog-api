@@ -15,4 +15,4 @@ const privateEndpoint = (req: NowRequest, res: NowResponse): void => {
   return
 }
 
-export default compose(privateEndpoint, allowCors, withAuth, withCheckMD5)
+export default compose(allowCors, withAuth, withCheckMD5)(privateEndpoint)

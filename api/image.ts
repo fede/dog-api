@@ -1,19 +1,18 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import fs from 'fs'
 import withCheckMD5 from '../lib/withCheckMD5'
+import allowCors from '../lib/allowCors'
 import path from 'path'
 import Alea from 'alea'
-import { compose, replace, match, head } from 'ramda'
+import { compose, replace } from 'ramda'
 
-const sanitizeSize = compose(head, match(/\d+/))
-
-const replaceSize = (size: number, image: string) =>
+const replaceSize = (size: number | string, image: string) =>
   replace(/width="\d*.+px"/g, `width="${size}px" height="${size}px"`, image)
 
 const imageEndpoint = (req: NowRequest, res: NowResponse): void => {
-  const { md5email, size = 96 } = req.query
-  const intSize = sanitizeSize(size)
+  const { md5email, size } = req.query
   const seededRandom = Alea(md5email)
+  const intSize = parseInt(size, 10) || 96
   const imagePath = path.join(
     __dirname,
     `../profile-vectors/dog-${Math.floor(seededRandom() * 30)}.svg`
@@ -25,4 +24,4 @@ const imageEndpoint = (req: NowRequest, res: NowResponse): void => {
   return
 }
 
-export default compose(imageEndpoint, withCheckMD5)
+export default compose(withCheckMD5, allowCors)(imageEndpoint)

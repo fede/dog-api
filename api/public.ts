@@ -16,4 +16,4 @@ const publicEndpoint = (req: NowRequest, res: NowResponse): void => {
   return
 }
 
-export default compose(publicEndpoint, withCheckMD5, allowCors)
+export default compose(withCheckMD5, allowCors)(publicEndpoint)
