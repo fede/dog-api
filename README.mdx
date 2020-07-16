@@ -73,6 +73,34 @@ Response example
 }
 ```
 
+### Post a message
+
+This endpoint does not allow CORS disabled.
+
+```
+curl http://localhost:3000/user/{hashedEmail} \
+  -H 'Authorization: afbe40f8-e5c6-49ab-bfd6-57eba05ae1a0'
+  -H 'Content-Type: application/json'
+  -d "{\"message\":\"Woof\"}"
+```
+
+Example
+
+```sh
+curl https://dog-api.vercel.app/user/279A853DF1CAAA245E1D0BBB8FFCC2C3 \
+  -H 'Authorization: afbe40f8-e5c6-49ab-bfd6-57eba05ae1a0'
+  -H 'Content-Type: application/json'
+  -d "{\"message\":\"Woof\"}"
+```
+
+Response example
+
+```
+{
+  message: 'Woof woof'
+}
+```
+
 <style>
   body {
     font-family: Inter, -apple-system, system-ui;

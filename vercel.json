@@ -1,8 +1,22 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "api/documentation" },
-    { "source": "/user/:md5email/image", "destination": "api/image" },
-    { "source": "/user/:md5email/preferences", "destination": "api/private" },
-    { "source": "/user/:md5email/details", "destination": "api/public" }
+  "routes": [
+    {
+      "src": "/user/(?<md5email>[^/]*)",
+      "dest": "api/privatePost?md5email=$md5email",
+      "methods": ["POST"]
+    },
+    { "src": "/", "dest": "api/documentation" },
+    {
+      "src": "/user/(?<md5email>[^/]*)/image",
+      "dest": "api/image?md5email=$md5email"
+    },
+    {
+      "src": "/user/(?<md5email>[^/]*)/preferences",
+      "dest": "api/private?md5email=$md5email"
+    },
+    {
+      "src": "/user/(?<md5email>[^/]*)/details",
+      "dest": "api/public?md5email=$md5email"
+    }
   ]
 }
